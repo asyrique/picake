@@ -1,0 +1,11 @@
+[Unit]
+Description=Intialies the wifi network for piCake Box and starts apps in start.d
+
+[Service]
+Type=oneshot
+ExecStart=/srv/app/scripts/up.sh
+ExecStop=/srv/app/scripts/down.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=muti-user.target

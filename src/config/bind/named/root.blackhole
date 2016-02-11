@@ -1,0 +1,10 @@
+$TTL    604800
+@       IN      SOA     . root.localhost. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+
+        IN      NS      ns1.picake.org
+*.      IN      A       10.10.0.1

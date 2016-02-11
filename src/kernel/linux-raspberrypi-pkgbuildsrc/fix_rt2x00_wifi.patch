@@ -1,0 +1,25 @@
+From 6fd3bb73ce3bf2d3d57e4164df70510084d9cdef Mon Sep 17 00:00:00 2001
+From: Asyrique AT <asyrique@gmail.com>
+Date: Fri, 18 Dec 2015 17:02:45 -0500
+Subject: [PATCH] Fix for rt2x00 managed mode
+
+---
+ drivers/net/wireless/rt2x00/rt2x00dev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/rt2x00/rt2x00dev.c b/drivers/net/wireless/rt2x00/rt2x00dev.c
+index 5639ed8..2964212 100644
+--- a/drivers/net/wireless/rt2x00/rt2x00dev.c
++++ b/drivers/net/wireless/rt2x00/rt2x00dev.c
+@@ -1244,7 +1244,7 @@ static inline void rt2x00lib_set_if_combinations(struct rt2x00_dev *rt2x00dev)
+ 	 */
+ 	if_limit = &rt2x00dev->if_limits_ap;
+ 	if_limit->max = rt2x00dev->ops->max_ap_intf;
+-	if_limit->types = BIT(NL80211_IFTYPE_AP);
++	if_limit->types = BIT(NL80211_IFTYPE_AP) | BIT(NL80211_IFTYPE_STATION);
+ #ifdef CONFIG_MAC80211_MESH
+ 	if_limit->types |= BIT(NL80211_IFTYPE_MESH_POINT);
+ #endif
+-- 
+1.9.1
+

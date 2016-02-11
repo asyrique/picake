@@ -1,0 +1,13 @@
+$TTL 7200
+@	IN	SOA	musedlab.org. admin.musedlab.org. (
+				2015121703	; serial
+					1H	; refresh
+					1H	; retry
+					9H	; expire
+					1D )	; Negative cache TTL
+
+	IN	NS	ns1.musedlab.org.
+
+; PTR Records
+1	IN	PTR	picake.org.
+1	IN	PTR	ns1.picake.org.

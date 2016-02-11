@@ -1,0 +1,13 @@
+build:
+  image: musedlab/buildbot-img:v1
+  privileged: true
+  volumes:
+    - /srv/app/releases/picake:/host-release
+  environment:
+    - HOSTDIR=/host-release
+    - PRIV_KEY=$$PRIV_KEY
+  commands:
+    - make build && make clean
+    - make deploy
+  branches:
+    - master
