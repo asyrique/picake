@@ -7,8 +7,6 @@ Building pre-built images is hard. The curent status quo is setting up the image
 # Structure
 All app files live in the `/srv` directory.
 
-Inside of `/srv`
-
 # Build process
 ### build.sh
 1. Build directories are set up as below:
@@ -78,3 +76,11 @@ Inside of `/srv`
 - [ ] Make fdisk commands more explicit i.e. don't accept defaults, specify all values.
 - [ ] Move to Alpine Linux for the build container.
 - [ ] Consider Alpine as a base for the RPi base.
+
+# License
+[Here](https://github.com/asyrique/picake/blob/master/LICENSE)
+
+Code originally by Asyrique Thevendran, 2016.
+Heavily inspired by [this blog post](https://lionfacelemonface.wordpress.com/2015/04/18/raspberry-pi-build-environment-in-no-time-at-all/)
+
+Name credits: My brother, Aqiel Thevendran.
