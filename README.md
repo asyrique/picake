@@ -1,4 +1,4 @@
-# pi:cake:
+### piCake (π:cake:)
 An image builder and Arch base image for RPi 2 that can be extended to build images with preinstalled configs and packages.
 
 # Rationale
