@@ -69,6 +69,13 @@ All app files live in the `/srv` directory.
 
 1. The image is then deployed to the release directory, in this case `/host-release` which is mounted from `/srv/app/releases/picake`.
 
+# Keeping your fork in sync
+
+If you fork this repository, but want to keep it in sync with updates pushed to the master, don't forget to add this repo as an `upstream` branch to your current fork. Instructions here: https://help.github.com/articles/configuring-a-remote-for-a-fork/
+
+Then, you can sync your fork at any time like so:
+https://help.github.com/articles/syncing-a-fork/
+
 # TODO
 - [ ] Command-line client to build images.
 - [ ] Investigate removing dependency on Drone
