@@ -1,0 +1,20 @@
+sudo: required
+dist: trusty
+
+before_install:
+  - sudo add-apt-repository ppa:jacob/virtualisation -y
+  - sudo apt-get -qq update
+  - sudo apt-get install -y bsdtar kpartx qemu-user-static haveged libtalloc2 dosfstools pigz wget make
+  - wget -q http://download.opensuse.org/repositories/home:/cedric-vincent/xUbuntu_14.04/amd64/proot_5.1.0-1_amd64.deb
+  - sudo dpkg -i proot_5.1.0-1_amd64.deb
+
+script:
+  - sudo mkdir -p /srv/releases
+  - sudo make travis-build
+
+before_deploy:
+  - pigz -f --best < /srv/builddir/img/rpi2-picake.img > /srv/releases/rpi2-picake-${TRAVIS_COMMIT:0:7}.img.gz
+addons:
+  artifacts:
+    paths:
+      - /srv/releases/rpi2-picake-${TRAVIS_COMMIT:0:7}.img.gz

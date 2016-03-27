@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Set any subsequent commands to exit the shell script immediately
-set -e
+# Bash strict mode
+set -euo pipefail
+IFS=$'\n\t'
 
 # Get script directory
 export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
