@@ -7,12 +7,12 @@
 buildarch=20
 
 pkgbase=linux-raspberrypi
-_commit=ca312f557513e057c456598528e663fe9d009498
+_commit=f5b71eeb9b40451bff82e010e48c605d5dc9e2f2
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi"
-pkgver=4.1.17
-pkgrel=2
+pkgver=4.1.20
+pkgrel=3
 bfqver=v7r8
 arch=('armv6h' 'armv7h')
 url="http://www.kernel.org/"
@@ -25,20 +25,23 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         "ftp://teambelgium.net/bfq/patches/${pkgver%.*}.0-${bfqver}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${bfqver}-${pkgver%.*}.patch"
         "ftp://teambelgium.net/bfq/patches/${pkgver%.*}.0-${bfqver}/0002-block-introduce-the-BFQ-${bfqver}-I-O-sched-for-${pkgver%.*}.patch"
         "ftp://teambelgium.net/bfq/patches/${pkgver%.*}.0-${bfqver}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${bfqver}-for-${pkgver%.*}.0.patch"
+        'https://archlinuxarm.org/builder/src/brcmfmac43430-sdio.bin' 'https://archlinuxarm.org/builder/src/brcmfmac43430-sdio.txt'
         'config.txt'
         'cmdline.txt'
         'config.v6'
         'config.v7')
-md5sums=('0d4a7076b1b41333e71b347222b3da9a'
+md5sums=('f80fd0520358c7b0fba5784fd43d720a'
          'SKIP'
          'SKIP'
          '74bf103542cbdee0363819309adb97a2'
          'f09baae3c7add4ed9bedde22ae3efe19'
          'bd8cc19a31d1cf8aeeaf9245057c4f9b'
+         '4a410ab9a1eefe82e158d36df02b3589'
+         '8c3cb6d8f0609b43f09d083b4006ec5a'
          '9a3c82da627b317ec79c37fd6afba569'
          '60bc3624123c183305677097bcd56212'
-         'db8c931027f6814822ad63424699524c'
-         'fb6a30b7a10b998703161a459ffde256')
+         '872d0a62ed89453eac9c6f257bd6802b'
+         '79d4e1bf81f732aa9b6c4fb4a70361da')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -71,6 +74,9 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
+
+  mkdir firmware/brcm
+  cp ../brcmfmac43430-sdio.{bin,txt} firmware/brcm
 }
 
 build() {
