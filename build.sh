@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Bash strict mode
-set -euo pipefail
+set -eu
 IFS=$'\n\t'
 
 # Get script directory
