@@ -9,12 +9,16 @@ before_install:
   - sudo dpkg -i proot_5.1.0-1_amd64.deb
 
 script:
-  - sudo mkdir -p /srv/releases
   - sudo make travis-build
 
 before_deploy:
-  - pigz -f --best < /srv/builddir/img/rpi2-picake.img > /srv/releases/rpi2-picake-${TRAVIS_COMMIT:0:7}.img.gz
-addons:
-  artifacts:
-    paths:
-      - /srv/releases/rpi2-picake-${TRAVIS_COMMIT:0:7}.img.gz
+  - mkdir -p /home/travis/build/asyrique/picake/releases
+  - pigz -f --best < /srv/builddir/img/rpi2-picake.img > /home/travis/build/asyrique/picake/releases/rpi2-picake-${TRAVIS_COMMIT:0:7}.img.gz
+deploy:
+  provider: s3
+  access_key_id: 'AKIAJNAUFAQZKGWLY3UA'
+  secret_access_key:
+    secure: fhFFIc3qVC1yuZ5WiLWOVJ4Undw/MjxPvj0L4iyC6wAPnYobmpiWKw8dfwCHRp2fBS88ERreFPiI8vXxvM252CuPVryp2AxL1QwMS7JCPeq/Swv1TnoMMrRSLEMJTm2hPkD5VKcF6vKnPFOKCrcc8C9x+nw1XaaH6s/2cEp/wv1L+wEakYFMfL6bEaLhcfOGpIx2FZaCBeIRQZMGFyeQobwXteua8t3+o9t50kCn9W23bsei27N2VV0metredt3I2dX3ip5CsMysatVpHzpmxQrOn6TOXI2R0nhw1Kl36Nfj08k5YioEGwtBE2nVF8eFiCaSsUNsTOS1LKcoPC9m/8ufzDppDOHqlf91RPMJNCvLGYdO11LgcOz8AoBKwWkHLxIaHa5symQ5G1A8prR4Wc/8olvzeaE/it9yVeCyhEw4wp/TrpqmIhrHB5heT+Km//3dDXuODAbkopR0YEoet3I0sQ4LlDAdKfod8vfl9FoLt6rp04yLlUIxlPsh7x+XSDsfZfD6Qpbu4hmC5vGXH17q4/qls94oCSC0RC+vNSuaz3ikQXW8y5zMbFwfeReXxrKKe/G/voHgFt/tUTuuPsho/a/xhQVohcciNexHEMCKu7giG87bLAUzkxL3i18ky8YS+4fISXWN/xuARm71eKy6v54hWZ/CjHVQXFiHGB8=
+  bucket: "picake"
+  skip_cleanup: true
+  local_dir: releases
