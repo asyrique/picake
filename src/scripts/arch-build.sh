@@ -27,7 +27,7 @@ echo -e "\e[1;32m====================================================\e[0m"
 echo
 ls -al /host-rootfs$DIR/src
 echo -e "\e[1;32mInstalling kernel\e[0m"
-pacman -U --noconfirm /host-rootfs$DIR/src/kernel/linux-raspberrypi-4.1.17-2-armv7h.pkg.tar.xz /host-rootfs$DIR/src/kernel/linux-raspberrypi-headers-4.1.17-2-armv7h.pkg.tar.xz
+pacman -U --noconfirm /host-rootfs$DIR/src/kernel/linux-raspberrypi-4.1.20-3-armv7h.pkg.tar.xz /host-rootfs$DIR/src/kernel/linux-raspberrypi-headers-4.1.20-3-armv7h.pkg.tar.xz
 mkdir $APPDIR
 cp -r /host-rootfs$DIR/src/config $APPDIR
 cp -r /host-rootfs$DIR/src/scripts $APPDIR
