@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# Bash strict mode
+set -eu
+set -o pipefail
+IFS=$'\n\t'
+
 APPDIR=/srv/app
 
 echo "HERE BE $DIR"

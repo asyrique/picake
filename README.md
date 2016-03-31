@@ -1,4 +1,5 @@
-### piCake (π:cake:)
+### piCake (π:cake:) [![Build Status](https://travis-ci.org/asyrique/picake.svg?branch=master)](https://travis-ci.org/asyrique/picake)
+
 An image builder and Arch base image for RPi 2 that can be extended to build images with preinstalled configs and packages.
 
 # Rationale

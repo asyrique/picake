@@ -2,6 +2,7 @@
 
 # Bash strict mode
 set -eu
+set -o pipefail
 IFS=$'\n\t'
 
 # Get script directory
@@ -26,7 +27,7 @@ fi
 # Allocate build image
 echo -e "\e[1;32mStarted allocate disk image\e[0m"
 # truncate is only tested on Ubuntu 14.04. Please replace with the correct command for your distro
-truncate -s 3G /srv/builddir/img/rpi2-picake.img
+truncate -s 5G /srv/builddir/img/rpi2-picake.img
 echo -e "\e[1;32mDisk image created at /srv/builddir/img/rpi2-picake.img\e[0m"
 
 # Begin partitioning disk image.

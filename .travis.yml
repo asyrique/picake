@@ -9,16 +9,16 @@ before_install:
   - sudo dpkg -i proot_5.1.0-1_amd64.deb
 
 script:
-  - sudo make travis-build
+  - sudo make build
 
 before_deploy:
   - mkdir -p /home/travis/build/asyrique/picake/releases
-  - pigz -f --best < /srv/builddir/img/rpi2-picake.img > /home/travis/build/asyrique/picake/releases/rpi2-picake-${TRAVIS_COMMIT:0:7}.img.gz
+  - pigz -f --best < /srv/builddir/img/rpi2-picake.img > /home/travis/build/asyrique/picake/releases/rpi2-picake-${TRAVIS_TAG}.img.gz
 deploy:
-  provider: s3
-  access_key_id: 'AKIAJNAUFAQZKGWLY3UA'
-  secret_access_key:
-    secure: fhFFIc3qVC1yuZ5WiLWOVJ4Undw/MjxPvj0L4iyC6wAPnYobmpiWKw8dfwCHRp2fBS88ERreFPiI8vXxvM252CuPVryp2AxL1QwMS7JCPeq/Swv1TnoMMrRSLEMJTm2hPkD5VKcF6vKnPFOKCrcc8C9x+nw1XaaH6s/2cEp/wv1L+wEakYFMfL6bEaLhcfOGpIx2FZaCBeIRQZMGFyeQobwXteua8t3+o9t50kCn9W23bsei27N2VV0metredt3I2dX3ip5CsMysatVpHzpmxQrOn6TOXI2R0nhw1Kl36Nfj08k5YioEGwtBE2nVF8eFiCaSsUNsTOS1LKcoPC9m/8ufzDppDOHqlf91RPMJNCvLGYdO11LgcOz8AoBKwWkHLxIaHa5symQ5G1A8prR4Wc/8olvzeaE/it9yVeCyhEw4wp/TrpqmIhrHB5heT+Km//3dDXuODAbkopR0YEoet3I0sQ4LlDAdKfod8vfl9FoLt6rp04yLlUIxlPsh7x+XSDsfZfD6Qpbu4hmC5vGXH17q4/qls94oCSC0RC+vNSuaz3ikQXW8y5zMbFwfeReXxrKKe/G/voHgFt/tUTuuPsho/a/xhQVohcciNexHEMCKu7giG87bLAUzkxL3i18ky8YS+4fISXWN/xuARm71eKy6v54hWZ/CjHVQXFiHGB8=
-  bucket: "picake"
+  provider: releases
+  api_key:
+    secure: "eRbMSWuMUyshnIWF+fNRS+4ERRYOcycl7UsvQ/OuUeu8pGtJe5yMuaPqvuN/7F5j+OKBIC3akBKzRxkVDIXKYsPeRFooNl26fq+40Fy4dc0b+0st6rA8UX0GEEtSz4uwFh5Y0z4agyJrpCP86XzLNTmFZU4vND4mjyKE/7PvxKEN2F7sqL8rV7FCbbDbJepvD80B5mQ1e7vahxq4QleunV5YV4RWlv557oTH+z49uhXcwrpHcXaugJ+7rPcpZiZmFJIKI0+FY3JJicSqJfhm+b7jQGPu1nbObovkNmJr3cD1svfpt/oWVqvRed0c4orNrkOIoD85CJXPobQrhZY6G+DeIZuX2mfAT0JSGma3piSS7dq1JANUH9/Mj23zh2M1iyhuP3digpodlT8piri9C8olzyunRnpVvNvp24DOuvGLHjF8by9EMMGdMosh382Ph8mL9npqRNqSDI+ttS7XiwbkX95SkvPFy7Fm4BoHLlJq01pOeNX84KwswehBinvxru8qQ6lG5DCsm9SBdkBfGMXFhz8tVCQ7biqsMfmZQoCvqOHN0rpVZSScvKjo2ZnQBJKwMI4hlZVTNq7FKy1fTw1eIQeQsfqenZSxy3e9IwS/Uv9gU/Vp6Bq5xushYNPeaY5da+M6jp7rrUHEv4pwG8TEOYwbT0zbHEDr0ybsvdM="
+  file: /home/travis/build/asyrique/picake/releases/rpi2-picake-${TRAVIS_TAG}.img.gz
   skip_cleanup: true
-  local_dir: releases
+  on:
+    tags: true
