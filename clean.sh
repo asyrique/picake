@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Bash strict mode
-set -eu
-set -o pipefail
+set -euv
 IFS=$'\n\t'
 
 # Umount disk image and umount loop device

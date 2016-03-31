@@ -2,8 +2,7 @@
 # Zip up image and copy to mounted dir
 
 # Bash strict mode
-set -eu
-set -o pipefail
+set -euv
 IFS=$'\n\t'
 
 echo -e "\e[1;32mImage build completed!\e[0m"

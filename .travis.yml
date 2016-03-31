@@ -1,5 +1,6 @@
 sudo: required
 dist: trusty
+language: bash
 
 before_install:
   - sudo add-apt-repository ppa:jacob/virtualisation -y
