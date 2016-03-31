@@ -2,7 +2,7 @@
 
 An image builder and Arch base image for RPi 2 that can be extended to build images with preinstalled configs and packages.
 
-Current Git release: [0.1.0](https://github.com/asyrique/picake/tag/0.1.0)
+Current Git release: [0.1.0](https://github.com/asyrique/picake/releases/tag/0.1.0)
 
 # Rationale
 Building pre-built images is hard. The curent status quo is setting up the image on your device and then using `dd` to create the device image.
