@@ -4,7 +4,7 @@
 set -euv
 IFS=$'\n\t'
 
-echo "${which bash}"
+echo "$(which bash)"
 # Get script directory
 export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
