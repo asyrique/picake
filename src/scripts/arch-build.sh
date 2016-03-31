@@ -38,7 +38,7 @@ cp -r /host-rootfs$DIR/src/config $APPDIR
 cp -r /host-rootfs$DIR/src/scripts $APPDIR
 cp -r /host-rootfs$DIR/src/deps $APPDIR
 
-if [ -z "${PRIV_KEY+x}" ]
+if [ ! -z ${PRIV_KEY:-} ]
 then
   echo -e "\e[1;32mInstall private key\e[0m"
   mkdir -p /root/.ssh /home/alarm/.ssh
