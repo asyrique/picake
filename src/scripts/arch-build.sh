@@ -10,7 +10,7 @@ echo "HERE BE $DIR"
 echo -e "\e[1;32mchrooted into Arch system\e[0m"
 echo
 echo -e "\e[1;32mRunning pacman update\e[0m"
-pacman -Sy
+pacman -Syu --noconfirm
 echo -e "\e[1;32mInstalling base for wifi and DHCP\e[0m"
 pacman -S --noconfirm crda \
                       iw \

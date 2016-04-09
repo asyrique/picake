@@ -1,18 +1,18 @@
-# Maintainer: Dave Higham <pepedog@archlinuxarm.org>
-# Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
-# Maintainer: Oleg Rakhmanov <oleg@archlinuxarm.org>
+# Maintainer: Dave Higham
+# Maintainer: Kevin Mihelich
+# Maintainer: Oleg Rakhmanov
 
 # NOTE: Packages replace linux-raspberrypi-latest, remove if that package comes back
 
 buildarch=20
 
 pkgbase=linux-raspberrypi
-_commit=f5b71eeb9b40451bff82e010e48c605d5dc9e2f2
+_commit=698134278274540606b37c491dae94b44c6dcea4
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi"
-pkgver=4.1.20
-pkgrel=3
+pkgver=4.1.21
+pkgrel=1
 bfqver=v7r8
 arch=('armv6h' 'armv7h')
 url="http://www.kernel.org/"
@@ -30,7 +30,7 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         'cmdline.txt'
         'config.v6'
         'config.v7')
-md5sums=('f80fd0520358c7b0fba5784fd43d720a'
+md5sums=('f8fcf11fde6a943aaec65e266ca98bda'
          'SKIP'
          'SKIP'
          '74bf103542cbdee0363819309adb97a2'
@@ -59,7 +59,7 @@ prepare() {
 
   msg2 "Patch wifi"
   patch -Np1 -i "${srcdir}/fix_rt2x00_wifi.patch"
-
+  
   msg2 "Add BFQ patches"
   patch -Np1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${bfqver}-${pkgver%.*}.patch"
   patch -Np1 -i "${srcdir}/0002-block-introduce-the-BFQ-${bfqver}-I-O-sched-for-${pkgver%.*}.patch"
